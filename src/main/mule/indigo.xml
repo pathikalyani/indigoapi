@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="d4b348dd-442e-42a2-bce4-7be3753dd32c" >
+		<http:request-connection host="${indigo.host}" port="${indigo.port}" />
+	</http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="810ee87f-d42d-41c8-b858-1c6e8ce40e2c" file="indigo-DEV.properties" />
+	<flow name="indigoFlow" doc:id="9d7df910-ea44-426c-900a-f9700f0b2f22" >
+		<logger level="INFO" doc:name="Logger" doc:id="f5451932-203e-4147-9619-89ebeaf3b5f4" message="Request received is..........."/>
+		<http:request method="GET" doc:name="Request" doc:id="3140a700-942e-4a29-8ac2-ab519c276515" config-ref="HTTP_Request_configuration" path="/api/getFlights">
+			<http:query-params ><![CDATA[#[output application/java
+---
+{
+	from : attributes.queryParams.from,
+	to : attributes.queryParams.to,
+	depatureDate : attributes.queryParams.doj
+}]]]></http:query-params>
+		</http:request>
+		<ee:transform doc:name="Transform Message" doc:id="81deaf17-ca9f-47ca-a189-888b5c38d6fc" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="456789bd-5b3f-4a9b-91c2-c91693bccf2c" message="Response is.................#[payload]"/>
+	</flow>
+</mule>
