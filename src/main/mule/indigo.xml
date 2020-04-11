@@ -29,6 +29,6 @@ payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 		<logger level="INFO" doc:name="Logger" doc:id="456789bd-5b3f-4a9b-91c2-c91693bccf2c" message="Response is.................#[payload]"/>
-	        <logger level="INFO" doc:name="Logger" doc:id="f9dc5d0d-c9a9-4757-8a22-e758af548913" message="The indigo result is ..........."/>
+	        <logger level="INFO" doc:name="Logger" doc:id="f9dc5d0d-c9a9-4757-8a22-e758af548913" message="The indigo result is  from logger2..........."/>
 	</flow>
 </mule>
