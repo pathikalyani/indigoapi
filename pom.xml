@@ -24,8 +24,19 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
-				<configuration>
-				</configuration>
+		<configuration>
+				<cloudHubDeployment>
+     				 <uri>https://anypoint.mulesoft.com</uri>
+      				 <muleVersion>${app.runtime}</muleVersion>
+      				 <username>pranu</username>
+     				 <password>Pranu123</password>
+      				 <applicationName>indigo-api1-cloud</applicationName>
+      				 <environment>Sandbox</environment>
+      				 <workerType>MICRO</workerType>
+      				 <workers>1</workers>
+      			         </cloudHubDeployment>
+				 <classifier>mule-application</classifier>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
