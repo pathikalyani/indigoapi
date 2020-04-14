@@ -7,14 +7,14 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
-	<name>Mule indigoapi</name>
+	<name>indigoapi</name>
 
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.2.2</app.runtime>
-		<mule.maven.plugin.version>3.6.3</mule.maven.plugin.version>
+		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
 	</properties>
 
 	<build>
@@ -24,7 +24,7 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
-		<configuration>
+				<configuration>
 				<cloudHubDeployment>
      				 <uri>https://anypoint.mulesoft.com</uri>
       				 <muleVersion>${app.runtime}</muleVersion>
@@ -34,18 +34,10 @@
       				 <environment>Sandbox</environment>
       				 <workerType>MICRO</workerType>
       				 <workers>1</workers>
-      			         </cloudHubDeployment>
-				 <classifier>mule-application</classifier>
+      			</cloudHubDeployment>
+				<classifier>mule-application</classifier>
                 </configuration>
 			</plugin>
-			<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-deploy-plugin</artifactId>
-            <configuration>
-               <skip>true</skip>
-            </configuration>
-         </plugin>
-	
 		</plugins>
 	</build>
 
