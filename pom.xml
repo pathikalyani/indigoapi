@@ -66,14 +66,7 @@
             <version>1.5.1</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-    	<dependency>
-            <groupId>com.mycompany</groupId>
-            <artifactId>flightsdomain</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <classifier>mule-domain</classifier>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+    	</dependencies>
 
 	<repositories>
           <repository>
