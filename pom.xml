@@ -34,8 +34,12 @@
       				 <environment>Sandbox</environment>
       				 <workerType>MICRO</workerType>
       				 <workers>1</workers>
+				 <properties>
+ 				 <http.port>8081</http.port>
+				 </properties>
+
       			</cloudHubDeployment>
-				<classifier>mule-application</classifier>
+				
                 </configuration>
 			</plugin>
 		</plugins>
